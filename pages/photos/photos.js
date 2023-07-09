@@ -77,7 +77,7 @@ document.title = title;
 const renderPhotos = function (currentPage) {
 
     client.photos[searchObj ? "search" : "curated"]({ ...searchObj, per_page: perPage, page: currentPage }, data => {
-        console.log(data)
+        // console.log(data)
 
         totalPage = Math.ceil(data.total_results / perPage);
 
@@ -86,14 +86,14 @@ const renderPhotos = function (currentPage) {
 
             updateGrid($photoCard, photoGrid.columnsHeight, photoGrid.$columns);
         });
+
+
+        // when photos loaded
         isLoaded = true;
         // when no more photo found , hide loader
 
         if (currentPage >= totalPage) $loader.style.display = "none";
     });
-
-
-    // when photos loaded
 
 }
 
@@ -108,9 +108,8 @@ let /** {Boolean} */ isLoaded = true;
 
 window.addEventListener("scroll", function () {
     // console.log($loader.getBoundingClientRect().top);
-    console.log($loader.getBoundingClientRect().top, this.innerHeight * 2)
+    // console.log($loader.getBoundingClientRect().top, this.innerHeight * 2)
     if ($loader.getBoundingClientRect().top < this.innerHeight * 2 && currentPage <= totalPage && isLoaded) {
-        console.log("fetching...")
         currentPage++;
         renderPhotos(currentPage);
         isLoaded = false;
