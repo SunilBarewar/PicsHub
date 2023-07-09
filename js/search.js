@@ -12,6 +12,7 @@ import { ripple } from "./utils/ripple.js";
 import { addEventsOnElements } from "./utils/event.js";
 import { segment } from "./segment_btn.js";
 import { updateUrl } from "./utils/updateUrl.js";
+import { urlDecode } from "./utils/urlDecode.js";
 
 
 /* Search view toggle in small devices */
@@ -61,7 +62,7 @@ const /* {NodeElement} */ $searchBtn = document.querySelector("[data-search-btn]
 
 $searchBtn.addEventListener("click", function () {
     const /* {Boolean} */ searchValue = $searchField.value.trim();
-    console.log(searchValue)
+    // console.log(searchValue)
     if (searchValue) {
         updateSearchHistory(searchValue);
         window.filterObj.query = searchValue;
@@ -141,3 +142,13 @@ for (let i = 0; i < historLen && i <= 5; i++) {
     $searchList.appendChild($listItem);
 
 }
+
+
+/**
+ * Show searched value in search field after reload
+ */
+
+const /**{object} */ search = urlDecode(window.location.search.slice(1));
+// console.log(search)
+
+if (search.query) $searchField.value = search.query;
