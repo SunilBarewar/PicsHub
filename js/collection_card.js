@@ -20,7 +20,7 @@ import { ripple } from "./utils/ripple.js";
 export const collectionCard = function (collection) {
     const /* {String} */ root = window.location.origin;
 
-    console.log(collection)
+    // console.log(collection)
 
     const {
         id,

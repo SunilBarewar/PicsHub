@@ -11,6 +11,7 @@
 
 import { ripple } from './utils/ripple.js'
 import { addEventsOnElements } from './utils/event.js'
+import { urlDecode } from './utils/urlDecode.js';
 
 /**  
  *  Header on-scroll state
@@ -56,6 +57,33 @@ addEventsOnElements($navTogglers, "click", function () {
 
 
 window.filterObj = {};
+
+
+/**
+ * show all filtered options after reload
+ */
+
+if (window.location.search.slice(1)) {
+    const /** {Object} */ search = urlDecode(window.location.search.slice(1));
+
+    console.log(search)
+
+    Object.entries(search).forEach(item => {
+        const /** {String} */ filterKey = item[0];
+        const /** {String} */ filterValue = item[1];
+
+        window.filterObj[filterKey] = filterValue;
+        console.log(item)
+        if (filterKey !== "query") {
+            const /** {NodeElement} */ $filterItem = document.querySelector(`[data-filter="${filterKey}"]`);
+
+            $filterItem?.querySelector("[data-filter-chip]").classList.add("selected");
+
+            if ($filterItem)
+                $filterItem.querySelector("[data-filter-value]").innerText = filterValue
+        }
+    })
+}
 
 
 /* Initial favorite object in local storage */
