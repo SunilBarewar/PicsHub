@@ -66,14 +66,12 @@ window.filterObj = {};
 if (window.location.search.slice(1)) {
     const /** {Object} */ search = urlDecode(window.location.search.slice(1));
 
-    console.log(search)
-
     Object.entries(search).forEach(item => {
         const /** {String} */ filterKey = item[0];
         const /** {String} */ filterValue = item[1];
 
         window.filterObj[filterKey] = filterValue;
-        console.log(item)
+
         if (filterKey !== "query") {
             const /** {NodeElement} */ $filterItem = document.querySelector(`[data-filter="${filterKey}"]`);
 

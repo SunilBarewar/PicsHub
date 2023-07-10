@@ -43,7 +43,7 @@ export const collectionCard = function (collection) {
 
         </div>
 
-        <a href="${root}/pages/collections/collection.html?collectionId=${id}&title=${title}" class="state-layer"></a>
+        <a href="${root}/pages/collections/collection_detail.html?collectionId=${id}&title=${title}" class="state-layer"></a>
     `;
 
     ripple($card);
