@@ -1,4 +1,4 @@
-# PicsHub - Pexels Clone
+# PixsStock - Pexels Clone
 
 This is a Pexels Clone, a web application that allows users to browse and search for high-quality images and videos using the Pexels API. The application is built using HTML, CSS, and JavaScript and provides five main pages: Home, Images, Videos, Collections, and Favorites.
 
